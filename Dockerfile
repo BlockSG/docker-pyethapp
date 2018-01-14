@@ -34,4 +34,7 @@ RUN git clone https://github.com/ethereum/pyethapp.git
 WORKDIR /code/pyethapp
 RUN python setup.py install
 RUN pip install pyethapp==1.5.1a0
+RUN pip uninstall -y scrypt
+RUN pip install scrypt
+
 
