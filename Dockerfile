@@ -34,7 +34,19 @@ RUN git clone https://github.com/ethereum/pyethapp.git
 WORKDIR /code/pyethapp
 RUN python setup.py install
 RUN pip install pyethapp==1.5.1a0
+
 RUN pip uninstall -y scrypt
 RUN pip install scrypt
 
+RUN apt-get install -y pandoc
+RUN pip install pandoc
+
+RUN apt-get install -y software-properties-common
+RUN apt-get update
+
+RUN add-apt-repository -y ppa:ethereum/ethereum
+RUN apt-get update
+RUN apt-get install -y solc
+RUN pip install py-solc
+RUN pip install eth-testrpc
 
