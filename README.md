@@ -1,2 +1,2 @@
 # docker-pyethapp
-Docker image file everything needed to build and run the Ethereum pyethapp console with pyethereum.
+Docker image file with everything needed to build and run the Ethereum pyethapp console with pyethereum.
