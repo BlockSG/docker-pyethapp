@@ -61,11 +61,23 @@ RUN git clone https://github.com/ethereum/web3.py.git
 WORKDIR /code/web3.py
 RUN pip install -r requirements-dev.txt
 RUN pip install -e .
+RUN python3 setup.py install
 
 RUN apt-get install -y solc
 RUN pip install py-solc
 RUN pip install eth-testrpc
 
+RUN pip3 install py-solc
+RUN pip3 install eth-testrpc
+
+
+WORKDIR /code
+RUN git clone https://github.com/ethereum/py-solc.git
+WORKDIR /code/py-solc
+RUN python setup.py install
+RUN python3 setup.py install
+
 RUN pip install pycryptodome==3.4.6
 RUN pip install ethereum==2.1.1
+
 
