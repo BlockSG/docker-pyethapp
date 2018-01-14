@@ -46,7 +46,26 @@ RUN apt-get update
 
 RUN add-apt-repository -y ppa:ethereum/ethereum
 RUN apt-get update
+
+WORKDIR /code/ve
+RUN mkdir web3
+RUN virtualenv -p python3 web3
+WORKDIR /code/ve/web3
+RUN cd /code/ve/web3
+
+RUN cd /code/ve/web3/bin
+RUN #!/bin/bash source activate .
+
+WORKDIR /code
+RUN git clone https://github.com/ethereum/web3.py.git
+WORKDIR /code/web3.py
+RUN pip install -r requirements-dev.txt
+RUN pip install -e .
+
 RUN apt-get install -y solc
 RUN pip install py-solc
 RUN pip install eth-testrpc
+
+RUN pip install pycryptodome==3.4.6
+RUN pip install ethereum==2.1.1
 
